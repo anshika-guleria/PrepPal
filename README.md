@@ -14,7 +14,7 @@
   <li>💬 Real-Time 1–1 Chat using Socket.IO</li>
   <li>📎 File & PDF Upload (Cloudinary)</li>
   <li>📹 Peer-to-Peer Video Calling (WebRTC)</li>
-  <li>🌗 Dark / Light Theme</li>
+  <li>🌗 Multiple Themes</li>
   <li>🔒 Protected Routes</li>
 </ul>
 
