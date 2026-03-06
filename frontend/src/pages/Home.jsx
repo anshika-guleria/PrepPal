@@ -88,7 +88,7 @@ function Home() {
     return () => (isMounted = false);
   }, []);
 
-  const { socket } = useSocket(currentUserId);
+  const { socket, onlineUsers } = useSocket(currentUserId);
 
   /* ===============================
      FRIEND STATUS
@@ -150,14 +150,15 @@ function Home() {
           ) : friends.length === 0 ? (
             <p className="text-sm opacity-60">No friends yet.</p>
           ) : (
-            friends.map((friend) => (
-              <FriendCard
-                key={friend._id}
-                name={friend.username}
-                avatar={friend.profileImage || "/default-avatar.png"}
-                onClick={() => setSelectedChat(friend)}
-              />
-            ))
+           friends.map((friend) => (
+  <FriendCard
+    key={friend._id}
+    name={friend.username}
+    avatar={friend.profileImage || "/default-avatar.png"}
+    isOnline={onlineUsers?.includes(friend._id)}
+    onClick={() => setSelectedChat(friend)}
+  />
+))
           )}
         </aside>
 

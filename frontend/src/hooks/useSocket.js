@@ -6,6 +6,9 @@ const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 export const useSocket = (userId) => {
   const [connected, setConnected] = useState(false);
 
+  // ⭐ NEW: track online users
+  const [onlineUsers, setOnlineUsers] = useState([]);
+
   // ==================== Create socket once per user ====================
   const socket = useMemo(() => {
     if (!userId) return null;
@@ -39,9 +42,22 @@ export const useSocket = (userId) => {
       console.error("❌ Socket connection error:", err.message);
     };
 
+    // ⭐ NEW: presence handlers
+    const handleUserOnline = (id) => {
+      setOnlineUsers((prev) => [...new Set([...prev, id])]);
+    };
+
+    const handleUserOffline = (id) => {
+      setOnlineUsers((prev) => prev.filter((u) => u !== id));
+    };
+
     socket.on("connect", handleConnect);
     socket.on("disconnect", handleDisconnect);
     socket.on("connect_error", handleConnectError);
+
+    // ⭐ NEW events
+    socket.on("userOnline", handleUserOnline);
+    socket.on("userOffline", handleUserOffline);
 
     socket.connect();
 
@@ -49,6 +65,11 @@ export const useSocket = (userId) => {
       socket.off("connect", handleConnect);
       socket.off("disconnect", handleDisconnect);
       socket.off("connect_error", handleConnectError);
+
+      // ⭐ NEW cleanup
+      socket.off("userOnline", handleUserOnline);
+      socket.off("userOffline", handleUserOffline);
+
       socket.disconnect();
       console.log("⚡ Socket cleaned up");
     };
@@ -65,7 +86,8 @@ export const useSocket = (userId) => {
     socket.emit("stopTyping", { userId: receiverId });
   };
 
-  return { socket, connected, sendTyping, stopTyping };
+  // ⭐ onlineUsers added to return
+  return { socket, connected, onlineUsers, sendTyping, stopTyping };
 };
 
 export default useSocket;

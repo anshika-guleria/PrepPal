@@ -25,7 +25,7 @@ export const initSocket = (server) => {
 
     socket.userId = userId;
     console.log("🟢 User connected:", socket.userId);
-
+    socket.broadcast.emit("userOnline", socket.userId);
     // Join user's private room
     socket.join(socket.userId.toString());
 
@@ -87,6 +87,7 @@ socket.on("endVideoCall", ({ receiverId }) => {
     /* ===== DISCONNECT ===== */
     socket.on("disconnect", () => {
       console.log("🔴 User disconnected:", socket.userId);
+      socket.broadcast.emit("userOffline", socket.userId);
     });
   });
 };
