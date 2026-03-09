@@ -45,16 +45,6 @@
 
 <hr/>
 
-<h2>📂 Project Structure</h2>
-
-<pre>
-PrepPal/
- ├── backend/
- └── frontend/
-</pre>
-
-<hr/>
-
 <h2>🔐 Environment Variables</h2>
 
 <h3>Backend (.env)</h3>
