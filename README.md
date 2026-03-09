@@ -44,9 +44,107 @@
 </ul>
 
 <hr/>
+<h2>Project Structure</h2>
 
+<hr/>
 <h2>🔐 Environment Variables</h2>
+PrepPal/
+├─ backend/
+│  ├─ src/
+│  │  ├─ config/
+│  │  │  ├─ db.js
+│  │  │  └─ jwt.js
+│  │  ├─ controllers/
+│  │  │  ├─ auth.controller.js
+│  │  │  ├─ chat.controller.js
+│  │  │  └─ user.controller.js
+│  │  ├─ lib/
+│  │  │  └─ cloudinary.js
+│  │  ├─ middleware/
+│  │  │  ├─ auth.middleware.js
+│  │  │  └─ upload.middlewear.js
+│  │  ├─ models/
+│  │  │  ├─ FriendRequest.js
+│  │  │  ├─ Message.js
+│  │  │  └─ User.js
+│  │  ├─ routes/
+│  │  │  ├─ auth.routes.js
+│  │  │  ├─ chat.routes.js
+│  │  │  └─ user.routes.js
+│  │  ├─ socket/
+│  │  │  └─ socket.js
+│  │  └─ server.js
+│  ├─ .env
+│  ├─ package-lock.json
+│  └─ package.json
+├─ frontend/
+│  ├─ public/
+│  │  ├─ prep.png
+│  │  └─ vite.svg
+│  ├─ src/
+│  │  ├─ api/
+│  │  │  ├─ auth.js
+│  │  │  ├─ axios.js
+│  │  │  ├─ chat.js
+│  │  │  ├─ friend.js
+│  │  │  └─ user.js
+│  │  ├─ assets/
+│  │  │  ├─ login.png
+│  │  │  ├─ react.svg
+│  │  │  └─ register.png
+│  │  ├─ components/
+│  │  │  ├─ chat/
+│  │  │  │  ├─ ChatList.jsx
+│  │  │  │  ├─ ChatWindow.jsx
+│  │  │  │  ├─ MessageBubble.jsx
+│  │  │  │  └─ MessageInput.jsx
+│  │  │  ├─ common/
+│  │  │  │  ├─ Loader.jsx
+│  │  │  │  └─ ThemeButton.jsx
+│  │  │  ├─ layout/
+│  │  │  │  └─ Navbar.jsx
+│  │  │  ├─ routes/
+│  │  │  │  └─ ProtectedRoute.jsx
+│  │  │  ├─ users/
+│  │  │  │  ├─ FriendCard.jsx
+│  │  │  │  ├─ FriendRequestCard.jsx
+│  │  │  │  └─ SuggestedUserCard.jsx
+│  │  │  └─ video/
+│  │  │     └─ VideoCall.jsx
+│  │  ├─ context/
+│  │  │  ├─ AuthContext.jsx
+│  │  │  └─ AuthContextProvider.jsx
+│  │  ├─ hooks/
+│  │  │  ├─ useAuth.js
+│  │  │  ├─ useFriends.js
+│  │  │  ├─ usePeer.js
+│  │  │  ├─ useSocket.js
+│  │  │  └─ useUsers.js
+│  │  ├─ pages/
+│  │  │  ├─ Home.jsx
+│  │  │  ├─ Login.jsx
+│  │  │  ├─ Profile.jsx
+│  │  │  └─ Register.jsx
+│  │  ├─ services/
+│  │  │  └─ authService.js
+│  │  ├─ utils/
+│  │  │  └─ call.js
+│  │  ├─ App.jsx
+│  │  ├─ index.css
+│  │  └─ main.jsx
+│  ├─ .env
+│  ├─ eslint.config.js
+│  ├─ index.html
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ postcss.config.js
+│  ├─ README.md
+│  ├─ tailwind.config.js
+│  └─ vite.config.js
+├─ .gitignore
+└─ README.md
 
+<hr/>
 <h3>Backend (.env)</h3>
 <pre>
 PORT=5000
